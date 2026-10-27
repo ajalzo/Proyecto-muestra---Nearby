@@ -1,5 +1,6 @@
 # Proyecto-muestra---Nearby
 Alzo y Monzon
+
 Paso a paso para abrirlo
 Instalá Python desde python.org/downloads. En el instalador tildá “Add python.exe to PATH” antes de instalar.
 Poné los archivos juntos en una carpeta nueva, por ejemplo C:\Users\LAB3-PC14\Documents\nearby. Los que importan son app.py, .gitignore y .env.example.
