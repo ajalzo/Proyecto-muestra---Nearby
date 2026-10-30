@@ -226,7 +226,7 @@ async function initMap(){const key=gfail?'':(LS('gkey')||SRVG);dark=document.doc
       M.addListener('click',e=>setPos(e.latLng.lat(),e.latLng.lng()));gm=true;
     }else{
       if(!window.L)await load('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');
-      M=L.map('map').setView([pos.lat,pos.lng],14);(()=>{const E='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',t=L.tileLayer(location.protocol=='file:'?E:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap · Esri',maxZoom:19}).addTo(M);let w=0;t.on('tileerror',()=>{if(!w){w=1;t.setUrl(E)}})})();
+      M=L.map('map').setView([pos.lat,pos.lng],14);(()=>{const E='https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',t=L.tileLayer(E,{attribution:'© OpenStreetMap · Esri',maxZoom:19}).addTo(M);let w=0;t.on('tileerror',()=>{if(!w){w=1;t.setUrl('https://tile.openstreetmap.org/{z}/{x}/{y}.png')}})})();
       M.on('click',e=>setPos(e.latlng.lat,e.latlng.lng));gm=false}
   }catch(e){if(key&&!gfail){gfail=true;gm=false;return initMap()}$('#map').innerHTML='<div class="mapx card"><b>No se pudo cargar el mapa.</b><br>Revisá tu conexión a internet.</div>';M=null;return}
   drawMe();search()}
